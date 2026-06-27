@@ -1,0 +1,10 @@
+node_modules/
+.wrangler/
+.dev.vars
+dist/
+
+# Legacy Go version's local runtime state (kept for reference, not deployed)
+data/*.json
+data/*.json.tmp
+uploads/*
+!uploads/.gitkeep

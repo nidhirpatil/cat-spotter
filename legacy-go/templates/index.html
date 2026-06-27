@@ -1,0 +1,30 @@
+{{template "layout" .}}
+
+{{define "content"}}
+<h1>Recently spotted</h1>
+{{if .Cats}}
+<ul class="cat-grid">
+  {{range .Cats}}
+  <li class="cat-card">
+    <div class="cat-photo">
+      {{if .ImageURL}}
+        <img src="{{.ImageURL}}" alt="{{.Name}}">
+      {{else}}
+        <span class="no-photo">🐾</span>
+      {{end}}
+    </div>
+    <div class="cat-body">
+      <h2>{{.Name}}</h2>
+      <p class="seen {{if not .LastSeen}}never{{end}}">{{ago .LastSeen}}</p>
+      <form method="post" action="/spot">
+        <input type="hidden" name="id" value="{{.ID}}">
+        <button type="submit" class="btn btn-spot">👀 Spotted!</button>
+      </form>
+    </div>
+  </li>
+  {{end}}
+</ul>
+{{else}}
+<p class="empty">No cats yet. <a href="/add">Add the first one</a> 🐈</p>
+{{end}}
+{{end}}

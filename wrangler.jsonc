@@ -1,0 +1,26 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "cat-spotter",
+  "main": "src/index.ts",
+  "compatibility_date": "2026-06-01",
+  // Static files in ./public (e.g. /style.css) are served before the Worker runs.
+  "assets": {
+    "directory": "./public",
+  },
+  // Serverless SQLite for cat records. database_id is filled in by
+  // `wrangler d1 create cat-spotter` (see README).
+  "d1_databases": [
+    {
+      "binding": "DB",
+      "database_name": "cat-spotter",
+      "database_id": "15317f0e-be04-4a54-a7d7-d25f661dcb51",
+    },
+  ],
+  // Object storage for cat photos.
+  "r2_buckets": [
+    {
+      "binding": "IMAGES",
+      "bucket_name": "cat-spotter-images",
+    },
+  ],
+}

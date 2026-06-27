@@ -1,0 +1,19 @@
+{{template "layout" .}}
+
+{{define "content"}}
+<h1>Add a cat</h1>
+<form method="post" action="/add" enctype="multipart/form-data" class="add-form">
+  <label>
+    Name
+    <input type="text" name="name" required placeholder="e.g. Marmalade">
+  </label>
+  <label>
+    Picture <span class="hint">(optional — jpg, png, gif, webp)</span>
+    <input type="file" name="picture" accept="image/*">
+  </label>
+  <div class="actions">
+    <button type="submit" class="btn btn-add">Add cat</button>
+    <a href="/" class="btn btn-cancel">Cancel</a>
+  </div>
+</form>
+{{end}}
